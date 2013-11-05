@@ -1,0 +1,41 @@
+
+    # session[:user_id] = 2  #FIXME delete these
+    # params[:id] = 2
+
+
+  describe "Post create" do
+    let(:question) {Question.create(question_text: "emily")}
+    let(:user) {User.create(name: "joe", email: "cool@joe.com", password_digest: "132")}
+    let(:answer) {Answer.new(answer_text: "yes that is cool", question_id: question.id)}
+
+    it "should find a question " do
+      Question.should_receive(:find).with(question.id.to_s)
+      post :create, question_id: question.id
+    end
+
+
+    # context "when an answer is saved successfully" do
+      # it "should have an answer_text" do
+
+      #   answer.should_receive(:save)
+        # session[:user_id] = user.id
+      #   post :create, question_id: question, answer: answer
+      #   # answer.answer_text.should_not be nil
+      # end
+      # it "redirect to the matching question page" do
+
+        # response.should redirect_to(:action => "question/show")
+        # post :create, id: answer, id: question
+      # end
+    # it "responds successfully with an HTTP 200 status code" do
+
+    # expect(response.status).to eq (200)
+    # context "when an answer is not saved successfully" do
+    #   post :create
+    #   it "shoudl not include answer_text" do
+    #     # answer.answer_text.should be nil
+    #   end
+    # end
+
+    # end
+  end
